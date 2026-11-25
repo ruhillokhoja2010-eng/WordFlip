@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>WordFlip</title>
 <meta name="theme-color" content="#f6efe5">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="WordFlip">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f6efe5;--card:#fdf9f2;--text:#1e1b18;--muted:#8a8178;--accent:#e25f3f;--accentbg:#fbe1d7;--ok:#3f9d6b;--bad:#e5534b;--line:#ebe2d5;--logobg:#ffffff}
@@ -1158,6 +1163,7 @@ $('fCam').onchange=e=>{handlePhoto(e.target.files[0]);e.target.value="";};
 $('fPic').onchange=e=>{handlePhoto(e.target.files[0]);e.target.value="";};
 $('fAv').onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;try{edAvatar=await blobToUrl(await shrink(f,256,.85));renderEdit();}catch(err){}};
 goto(S.loggedIn?'home':'login');
+if('serviceWorker' in navigator){addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{});});}
 </script>
 </body>
 </html>
